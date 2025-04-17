@@ -20,8 +20,13 @@ const TaskPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createTask(form);
-    setForm({ title: '', description: '' });
+    try {
+      await createTask(form);
+      setForm({ title: '', description: '' });
+    } catch (error) {
+      console.log("Error creating task", error)
+    }
+    
   };
 
   return (

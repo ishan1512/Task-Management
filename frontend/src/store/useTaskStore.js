@@ -18,6 +18,7 @@ export const useTaskStore = create((set)=>({
             toast.success("Task added successfully")
         } catch (error) {
             set({loading:false});
+
         }
     },
 
