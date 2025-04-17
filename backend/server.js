@@ -6,12 +6,10 @@ import path from "path"
 
 import { connectDb } from "./lib/db.js";
 import authRoute from "./routes/auth.route.js"
-import messageRoute from "./routes/message.route.js";
 import tasksRoute from "./routes/task.route.js";
-import {app,server} from "./lib/socket.js"
 
 dotenv.config();
-
+const app = express()
 app.use(express.json())
 app.use(cookieParser());
 
@@ -24,7 +22,6 @@ const __dirname = path.resolve();
 
 
 app.use("/api/auth", authRoute);
-app.use("/api/message", messageRoute);
 app.use("/api/tasks", tasksRoute);
 
 if(process.env.NODE_ENV === "production"){
@@ -37,7 +34,7 @@ if(process.env.NODE_ENV === "production"){
 
 
 const PORT = process.env.PORT || 5000
-server.listen(PORT, ()=>{
+app.listen(PORT, ()=>{
     connectDb()
     console.log(`Server is running on port ${PORT}`);
 })
