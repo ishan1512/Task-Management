@@ -23,11 +23,9 @@ function App() {
       <Route path='/' element={<HomePage/>}/>
       <Route path='/taskpage' element={ authUser ? <TaskPage/> : <Navigate to="/"/>}/>
       <Route path='/chat-room' element={ authUser ? <ChatRoom/> : <Navigate to="/"/>}/>
-      <Route path='/chat-room' element={ authUser ? <ChatRoom/> : <Navigate to="/"/>}/>
       <Route path='/view-tasks' element={authUser ? <ViewTasks/> : <Navigate to="/"/>}/>
       <Route path='/signup' element={!authUser ? <SignupPage/> : <Navigate to="/taskpage"/>}/>
       <Route path='/login' element={!authUser ? <LoginPage/> : <Navigate to="/taskpage"/>}/>
-      <Route path='/view-tasks' element={!authUser ? <LoginPage/> : <Navigate to="/view-tasks"/>}/>
 
     </Routes>
     <Toaster/>
